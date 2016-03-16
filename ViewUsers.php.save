@@ -1,0 +1,16 @@
+<?php
+
+	$dbURL = 'mysql.eecs.ku.edu';
+$dbUsername = 'ahutton';
+$dbPassword = 'myPassword';
+$dbName = 'ahutton';
+
+
+$mysqli = new mysqli($dbURL, $dbUsername, $dbPassword, $dbName);
+
+if ($mysqli->connect_errno){
+	printf("Connection Failed: %s\n", $mysqli->connect_error);
+	exit();
+}
+
+?>
