@@ -9,6 +9,7 @@ if (isset($_POST['submit'])){
 if ($content == ""){
 	echo "Content can't be blank!";
 }
+
 else {
 
 $dbURL = 'mysql.eecs.ku.edu';
@@ -26,10 +27,9 @@ if ($mysqli->connect_errno){
 
 $existingUser = $mysqli->query("SELECT user_id FROM Users WHERE user_id='$username'");
 
-if ($existingUser->num_rows === 0){
+if ($existingUser->num_rows === 1){
 
-$sql = "INSERT INTO Posts (author_id, content) VALUES ('$username', '$content'";
-
+$sql = "INSERT INTO Posts (author_id, content) VALUES ('$username', '$content')";
 
 if ($mysqli->query($sql) === TRUE) {
 	echo "Success!";
@@ -39,6 +39,7 @@ else {
 	echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
 }
 }
+
 else {
 	echo "You must be an existing user to post!";
 }
