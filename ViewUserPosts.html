@@ -1,12 +1,13 @@
 <html>
 
+	<?php include 'ViewUserPosts.php';?>
 	<head>
 		<title>View User Posts</title>
 	</head>
 
 	<body>
 
-		<form>
+		<form action="ViewUserPosts.php" method="post">
 			<?php
 			
 			$dbURL = 'mysql.eecs.ku.edu';
@@ -23,7 +24,7 @@
 
 			$sql = $mysqli->query("SELECT user_id FROM Users");
 	
-			echo "<select name='user_id'>";
+			echo "<select name='username'>";
 
 			while ($row = mysqli_fetch_array($sql)){
 				
