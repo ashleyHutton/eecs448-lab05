@@ -1,0 +1,41 @@
+<html>
+
+	<head>
+		<title>View User Posts</title>
+	</head>
+
+	<body>
+
+		<form>
+			<?php
+			
+			$dbURL = 'mysql.eecs.ku.edu';
+			$dbUsername = 'ahutton';
+			$dbPassword = 'myPassword';
+			$dbName = 'ahutton';
+
+			$mysqli = new mysqli($dbURL, $dbUsername, $dbPassword, $dbName);
+
+			if ($mysqli->connect_errno){
+				printf("Connection Failed: %s\n", $mysqli->connect_error);
+				exit();
+			}
+
+			$sql = $mysqli->query("SELECT user_id FROM Users");
+	
+			echo "<select name='user_id'>";
+
+			while ($row = mysqli_fetch_array($sql)){
+				
+				$name = $row['user_id'];
+				echo '<option value="'. $name .'">'.$name.'</option>';
+			}
+			echo "</select>";
+			?>
+
+			<input type="submit" name="submit" value="Submit">
+		</form>
+
+	</body>
+
+</html>
