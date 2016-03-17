@@ -1,14 +1,12 @@
 <html>
 
-	<?php include 'DeletePost.php';?>
-
 	<head>
 		<title>Delete Post</title>
 	</head>
 
 	<body>
 
-		<form action="DeletePost.php" method="post">
+		<form>
 
 		<?php
 			
@@ -27,27 +25,23 @@
 		$sql = $mysqli->query("SELECT * FROM Posts");
 
 		echo '<table>';
-		echo '<th>Post ID</th><th>User</th><th>Post</th><th>Delete</th>';
+		echo '<th>User</th><th>Post</th><th>Delete</th>';
 
 
 		while ($row = mysqli_fetch_array($sql)){
 
 			$name = $row['author_id'];
 			$post = $row['content'];
-			$post_id = $row['post_id'];
 
-			echo '<tr><td>'.$post_id.'</td><td>'.$name.'</td><td>'.$post.'</td>';
-		
-			echo '<td><input type="checkbox" name="isChecked[]"></td></tr>';	
-	
+			echo '<tr><td>'.$name.'</td><td>'.$post.'</tr>';
+			echo '<td><input type="checkbox" name=
+
 		}
 
 		echo '</table>';
 
 		?>
 
-		<br><input type="submit" name="submit" value="Submit">
-		
 		</form>
 
 	</body>
