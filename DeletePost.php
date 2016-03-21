@@ -20,7 +20,10 @@ if ($mysqli->connect_errno){
 $check = implode("','", $checked);
 
 $sql = $mysqli->query("DELETE FROM Posts WHERE post_id in ('$check')");
+
 if ($sql){
+	echo $check . "<br>";
+	echo $sql;
 	echo "Successfully deleted posts";
 }
 
